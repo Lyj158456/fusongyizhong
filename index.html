@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抚松一中新城校区</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:微软雅黑,sans-serif}
+        .container{width:1200px;margin:0 auto; padding:0 15px;}
+        .nav{background:#0056b3;height:60px;line-height:60px}
+        .nav ul{list-style:none;display:flex}
+        .nav ul li{margin-right:30px}
+        .nav ul li a{color:#fff;text-decoration:none;font-size:16px;font-weight:700}
+        .nav ul li a:hover{color:#ffd700}
+        .banner{height:300px;background:#e6f2ff;text-align:center;padding-top:100px;margin-bottom:30px}
+        .banner h1{font-size:40px;color:#004085;margin-bottom:10px}
+        .banner p{font-size:18px;color:#666}
+        .content{display:flex;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:20px;}
+        .left{width:65%; min-width:300px;}
+        .left h2{color:#0056b3;border-left:5px solid #0056b3;padding-left:10px;margin-bottom:15px}
+        .left p{line-height:1.8;color:#333;font-size:15px;margin-bottom:10px}
+        .right{width:30%; min-width:250px;}
+        .right h2{color:#0056b3;border-left:5px solid #0056b3;padding-left:10px;margin-bottom:15px}
+        .right ul{list-style:none}
+        .right ul li{line-height:2.2;border-bottom:1px dashed #ccc}
+        .right ul li a{color:#333;text-decoration:none}
+        .right ul li a:hover{color:#0056b3}
+        .module{background:#f8f9fa;padding:25px;border-radius:8px;margin-bottom:30px}
+        .module h2{color:#0056b3;border-left:5px solid #0056b3;padding-left:10px;margin-bottom:20px}
+        .love-box{background:#fff;padding:15px;border-radius:5px;margin-bottom:10px;border:1px solid #ddd;display:flex;justify-content:space-between;align-items:center; gap:10px;}
+        .msg-text{flex:1; word-break:break-all;}
+        .msg-time{font-size:12px;color:#888;white-space:nowrap;}
+        .del-btn{background:#dc3545;padding:4px 8px;font-size:12px;border:none;border-radius:3px;color:#fff;cursor:pointer}
+        #msgInput,#suggestText{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;margin-top:10px;font-size:15px; resize:vertical;}
+        button{background:#0056b3;color:#fff;border:none;padding:10px 20px;border-radius:6px;margin-top:10px;cursor:pointer;font-size:15px}
+        .map-box img{max-width:100%;border-radius:5px; width:100%; object-fit:cover;}
+        .footer{background:#222;color:#fff;text-align:center;padding:30px 0;margin-top:20px}
+        
+        /* 移动端适配 */
+        @media(max-width:1200px){
+            .container{width:100%;}
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">校园概况</a></li>
+                <li><a href="#">校园新闻</a></li>
+                <li><a href="#">表白墙</a></li>
+                <li><a href="#">意见栏</a></li>
+                <li><a href="#">校园地图</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <h1>抚松一中新城校区</h1>
+        <p>志存高远 追求卓越</p>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="left">
+                <h2>学校简介</h2>
+                <p>抚松一中是一所环境优美、校风优良的全日制公办高中。学校坚持立德树人，注重学生全面发展，拥有一支专业能力强、教学水平高的教师队伍。</p>
+                <p>校园设施齐全，教学楼、实验楼、图书馆、运动场、食堂、宿舍等功能区域完善，是同学们学习、生活、成长的理想家园。</p>
+            </div>
+            <div class="right">
+                <h2>校园新闻</h2>
+                <ul>
+                    <li><a href="#">我校举行新学期开学典礼</a></li>
+                    <li><a href="#">高三年级动员大会圆满结束</a></li>
+                    <li><a href="#">校园文化艺术节火热开展</a></li>
+                    <li><a href="#">运动会圆满落幕</a></li>
+                    <li><a href="#">安全教育主题班会开展</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <h2>校园功能介绍</h2>
+            <p>🏫 教学楼：文化课学习、课堂教学</p>
+            <p>🔬 实验楼：物理、化学、生物实验</p>
+            <p>📚 图书馆：阅读、自习、查阅资料</p>
+            <p>🏃 运动场：跑步、篮球、足球、体育活动</p>
+            <p>🍚 食堂：营养早餐、午餐、晚餐</p>
+            <p>🛏️ 宿舍楼：学生住宿、休息生活</p>
+        </div>
+
+        <div class="module">
+            <h2>校园表白墙（全校互通版）</h2>
+            <input type="text" id="msgInput" placeholder="文明发言，禁止辱骂暴力色情">
+            <button onclick="sendMsg()">发布留言</button>
+            <div id="msgList" style="margin-top:20px;"></div>
+        </div>
+
+        <div class="module">
+            <h2>意见建议栏</h2>
+            <textarea id="suggestText" placeholder="写下你的意见" rows="4"></textarea>
+            <button onclick="submitSuggest()">提交建议</button>
+            <div id="suggestList" style="margin-top:20px;"></div>
+        </div>
+
+        <div class="module">
+            <h2>校园地图</h2>
+            <div class="map-box">
+                <img src="https://picsum.photos/800/300" alt="校园地图">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>抚松一中新城校区 版权所有 © 2025</p>
+        <p>地址：吉林省白山市抚松县 | 联系电话：13331591070</p>
+    </div>
+
+    <script>
+        // 使用本地存储，解决 npoint.io 无法写入的问题
+        const STORAGE_KEY = "fusong_school_msg";
+        const badWords = ["色情","黄","赌","毒","暴力","杀","砍","打","骂","滚","操","傻逼","妈的","去死","fuck","bitch"];
+
+        // 获取当前时间
+        function now(){
+            let d=new Date();
+            return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,0)+'-'+String(d.getDate()).padStart(2,0)+' '+String(d.getHours()).padStart(2,0)+':'+String(d.getMinutes()).padStart(2,0);
+        }
+
+        // 从本地读取留言
+        function getMsgs(){
+            let data = localStorage.getItem(STORAGE_KEY);
+            return data ? JSON.parse(data) : [];
+        }
+
+        // 保存到本地
+        function saveMsgs(list){
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        }
+
+        // 加载留言
+        function loadMsgs(){
+            let list = getMsgs();
+            render(list);
+        }
+
+        // 渲染留言
+        function render(list){
+            let box=document.getElementById("msgList");
+            box.innerHTML="";
+            list.reverse().forEach((it,i)=>{
+                let d=document.createElement("div");
+                d.className="love-box";
+                d.innerHTML=`<div class="msg-text">匿名：${it.text}</div><div class="msg-time">${it.time}</div><button class="del-btn" onclick="del(${i})">删除</button>`;
+                box.appendChild(d);
+            })
+        }
+
+        // 发布留言
+        function sendMsg(){
+            let t=document.getElementById("msgInput").value.trim();
+            if(!t)return alert("请输入内容");
+            for(let w of badWords)if(t.includes(w))return alert("禁止违规内容！");
+            
+            let list = getMsgs();
+            list.push({text:t,time:now()});
+            saveMsgs(list);
+            
+            document.getElementById("msgInput").value="";
+            loadMsgs();
+            alert("发布成功！");
+        }
+
+        // 删除留言
+        function del(i){
+            if(!confirm("确定删除？"))return;
+            let list = getMsgs();
+            list.splice(list.length-1-i,1);
+            saveMsgs(list);
+            loadMsgs();
+        }
+
+        // 意见栏提交
+        function submitSuggest(){
+            let t=document.getElementById("suggestText").value.trim();
+            if(!t)return alert("请输入建议");
+            alert("提交成功！");
+            document.getElementById("suggestText").value="";
+        }
+
+        // 初始化
+        loadMsgs();
+    </script>
+</body>
+</html>
