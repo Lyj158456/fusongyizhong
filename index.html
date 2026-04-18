@@ -6,7 +6,7 @@
     <title>抚松一中新城校区</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:微软雅黑,sans-serif}
-        .container{width:1200px;margin:0 auto}
+        .container{width:1200px;margin:0 auto; padding:0 15px;}
         .nav{background:#0056b3;height:60px;line-height:60px}
         .nav ul{list-style:none;display:flex}
         .nav ul li{margin-right:30px}
@@ -15,11 +15,11 @@
         .banner{height:300px;background:#e6f2ff;text-align:center;padding-top:100px;margin-bottom:30px}
         .banner h1{font-size:40px;color:#004085;margin-bottom:10px}
         .banner p{font-size:18px;color:#666}
-        .content{display:flex;justify-content:space-between;margin-bottom:40px}
-        .left{width:65%}
+        .content{display:flex;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:20px;}
+        .left{width:65%; min-width:300px;}
         .left h2{color:#0056b3;border-left:5px solid #0056b3;padding-left:10px;margin-bottom:15px}
         .left p{line-height:1.8;color:#333;font-size:15px;margin-bottom:10px}
-        .right{width:30%}
+        .right{width:30%; min-width:250px;}
         .right h2{color:#0056b3;border-left:5px solid #0056b3;padding-left:10px;margin-bottom:15px}
         .right ul{list-style:none}
         .right ul li{line-height:2.2;border-bottom:1px dashed #ccc}
@@ -27,14 +27,19 @@
         .right ul li a:hover{color:#0056b3}
         .module{background:#f8f9fa;padding:25px;border-radius:8px;margin-bottom:30px}
         .module h2{color:#0056b3;border-left:5px solid #0056b3;padding-left:10px;margin-bottom:20px}
-        .love-box{background:#fff;padding:15px;border-radius:5px;margin-bottom:10px;border:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}
-        .msg-text{flex:1}
-        .msg-time{font-size:12px;color:#888;margin-right:10px}
+        .love-box{background:#fff;padding:15px;border-radius:5px;margin-bottom:10px;border:1px solid #ddd;display:flex;justify-content:space-between;align-items:center; gap:10px;}
+        .msg-text{flex:1; word-break:break-all;}
+        .msg-time{font-size:12px;color:#888;white-space:nowrap;}
         .del-btn{background:#dc3545;padding:4px 8px;font-size:12px;border:none;border-radius:3px;color:#fff;cursor:pointer}
-        #msgInput,#suggestText{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;margin-top:10px;font-size:15px}
+        #msgInput,#suggestText{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;margin-top:10px;font-size:15px; resize:vertical;}
         button{background:#0056b3;color:#fff;border:none;padding:10px 20px;border-radius:6px;margin-top:10px;cursor:pointer;font-size:15px}
-        .map-box img{max-width:100%;border-radius:5px}
+        .map-box img{max-width:100%;border-radius:5px; width:100%; object-fit:cover;}
         .footer{background:#222;color:#fff;text-align:center;padding:30px 0;margin-top:20px}
+        
+        /* 移动端适配 */
+        @media(max-width:1200px){
+            .container{width:100%;}
+        }
     </style>
 </head>
 <body>
@@ -94,7 +99,7 @@
 
         <div class="module">
             <h2>意见建议栏</h2>
-            <textarea id="suggestText" placeholder="写下你的意见"></textarea>
+            <textarea id="suggestText" placeholder="写下你的意见" rows="4"></textarea>
             <button onclick="submitSuggest()">提交建议</button>
             <div id="suggestList" style="margin-top:20px;"></div>
         </div>
@@ -113,25 +118,34 @@
     </div>
 
     <script>
-        // 全局共享表白墙（开源接口，所有人互通）
-        const API = "https://api.npoint.io/7e123d123c456789abcd";
+        // 使用本地存储，解决 npoint.io 无法写入的问题
+        const STORAGE_KEY = "fusong_school_msg";
         const badWords = ["色情","黄","赌","毒","暴力","杀","砍","打","骂","滚","操","傻逼","妈的","去死","fuck","bitch"];
 
+        // 获取当前时间
         function now(){
             let d=new Date();
             return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,0)+'-'+String(d.getDate()).padStart(2,0)+' '+String(d.getHours()).padStart(2,0)+':'+String(d.getMinutes()).padStart(2,0);
         }
 
-        // 加载留言
-        async function loadMsgs(){
-            try{
-                let r=await fetch(API);
-                let data=await r.json();
-                render(data.msg||[]);
-            }catch(e){render([])}
+        // 从本地读取留言
+        function getMsgs(){
+            let data = localStorage.getItem(STORAGE_KEY);
+            return data ? JSON.parse(data) : [];
         }
 
-        // 渲染
+        // 保存到本地
+        function saveMsgs(list){
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        }
+
+        // 加载留言
+        function loadMsgs(){
+            let list = getMsgs();
+            render(list);
+        }
+
+        // 渲染留言
         function render(list){
             let box=document.getElementById("msgList");
             box.innerHTML="";
@@ -143,38 +157,39 @@
             })
         }
 
-        // 发布
-        async function sendMsg(){
+        // 发布留言
+        function sendMsg(){
             let t=document.getElementById("msgInput").value.trim();
             if(!t)return alert("请输入内容");
             for(let w of badWords)if(t.includes(w))return alert("禁止违规内容！");
-            let res=await fetch(API);
-            let data=await res.json();
-            data.msg=data.msg||[];
-            data.msg.push({text:t,time:now()});
-            await fetch(API,{method:"PUT",body:JSON.stringify(data)});
+            
+            let list = getMsgs();
+            list.push({text:t,time:now()});
+            saveMsgs(list);
+            
             document.getElementById("msgInput").value="";
             loadMsgs();
+            alert("发布成功！");
         }
 
-        // 删除
-        async function del(i){
+        // 删除留言
+        function del(i){
             if(!confirm("确定删除？"))return;
-            let res=await fetch(API);
-            let data=await res.json();
-            data.msg.splice(data.msg.length-1-i,1);
-            await fetch(API,{method:"PUT",body:JSON.stringify(data)});
+            let list = getMsgs();
+            list.splice(list.length-1-i,1);
+            saveMsgs(list);
             loadMsgs();
         }
 
-        // 意见栏
-        async function submitSuggest(){
+        // 意见栏提交
+        function submitSuggest(){
             let t=document.getElementById("suggestText").value.trim();
             if(!t)return alert("请输入建议");
             alert("提交成功！");
             document.getElementById("suggestText").value="";
         }
 
+        // 初始化
         loadMsgs();
     </script>
 </body>
