@@ -30,225 +30,198 @@
         .love-box{background:#fff;padding:15px;border-radius:5px;margin-bottom:10px;border:1px solid #ddd;display:flex;justify-content:space-between;align-items:center; gap:10px;}
         .msg-text{flex:1; word-break:break-all;}
         .msg-time{font-size:12px;color:#888;white-space:nowrap;}
-        .del-btn{background:#dc3545;padding:4px 8px;font-size:12px;border:none;border-radius:3px;color:#fff;cursor:pointer}
         #msgInput,#suggestText{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;margin-top:10px;font-size:15px; resize:vertical;}
         button{background:#0056b3;color:#fff;border:none;padding:10px 20px;border-radius:6px;margin-top:10px;cursor:pointer;font-size:15px}
         .map-box img{max-width:100%;border-radius:5px; width:100%; object-fit:cover;}
         .footer{background:#222;color:#fff;text-align:center;padding:30px 0;margin-top:20px}
         
-        /* 移动端适配 */
-        @media(max-width:1200px){
-            .container{width:100%;}
-        }
+        @media(max-width:1200px){.container{width:100%;}}
     </style>
 </head>
 <body>
-    <div class="nav">
-        <div class="container">
+
+<div class="nav">
+    <div class="container">
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#intro">校园概况</a></li>
+            <li><a href="#news">校园新闻</a></li>
+            <li><a href="#love">表白墙</a></li>
+            <li><a href="#suggest">意见栏</a></li>
+            <li><a href="#map">校园地图</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="banner" id="home">
+    <h1>抚松一中新城校区</h1>
+    <p>志存高远 追求卓越</p>
+</div>
+
+<div class="container">
+    <div class="content">
+        <div class="left" id="intro">
+            <h2>学校简介</h2>
+            <p>抚松一中是一所环境优美、校风优良的全日制公办高中。学校坚持立德树人，注重学生全面发展，拥有一支专业能力强、教学水平高的教师队伍。</p>
+            <p>校园设施齐全，教学楼、实验楼、图书馆、运动场、食堂、宿舍等功能区域完善，是同学们学习、生活、成长的理想家园。</p>
+        </div>
+        <div class="right" id="news">
+            <h2>校园新闻</h2>
             <ul>
-                <li><a href="javascript:goPage('home')">首页</a></li>
-                <li><a href="javascript:goPage('intro')">校园概况</a></li>
-                <li><a href="javascript:goPage('news')">校园新闻</a></li>
-                <li><a href="javascript:goPage('love')">表白墙</a></li>
-                <li><a href="javascript:goPage('suggest')">意见栏</a></li>
-                <li><a href="javascript:goPage('map')">校园地图</a></li>
+                <li><a href="#">我校举行新学期开学典礼</a></li>
+                <li><a href="#">高三年级动员大会圆满结束</a></li>
+                <li><a href="#">校园文化艺术节火热开展</a></li>
+                <li><a href="#">运动会圆满落幕</a></li>
+                <li><a href="#">安全教育主题班会开展</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="banner" id="home">
-        <h1>抚松一中新城校区</h1>
-        <p>志存高远 追求卓越</p>
+    <div class="module">
+        <h2>校园功能介绍</h2>
+        <p>🏫 教学楼：文化课学习、课堂教学</p>
+        <p>🔬 实验楼：物理、化学、生物实验</p>
+        <p>📚 图书馆：阅读、自习、查阅资料</p>
+        <p>🏃 运动场：跑步、篮球、足球、体育活动</p>
+        <p>🍚 食堂：营养早餐、午餐、晚餐</p>
+        <p>🛏️ 宿舍楼：学生住宿、休息生活</p>
     </div>
 
-    <div class="container">
-        <div class="content">
-            <div class="left" id="intro">
-                <h2>学校简介</h2>
-                <p>抚松一中是一所环境优美、校风优良的全日制公办高中。学校坚持立德树人，注重学生全面发展，拥有一支专业能力强、教学水平高的教师队伍。</p>
-                <p>校园设施齐全，教学楼、实验楼、图书馆、运动场、食堂、宿舍等功能区域完善，是同学们学习、生活、成长的理想家园。</p>
-            </div>
-            <div class="right" id="news">
-                <h2>校园新闻</h2>
-                <ul>
-                    <li><a href="#">我校举行新学期开学典礼</a></li>
-                    <li><a href="#">高三年级动员大会圆满结束</a></li>
-                    <li><a href="#">校园文化艺术节火热开展</a></li>
-                    <li><a href="#">运动会圆满落幕</a></li>
-                    <li><a href="#">安全教育主题班会开展</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="module">
-            <h2>校园功能介绍</h2>
-            <p>🏫 教学楼：文化课学习、课堂教学</p>
-            <p>🔬 实验楼：物理、化学、生物实验</p>
-            <p>📚 图书馆：阅读、自习、查阅资料</p>
-            <p>🏃 运动场：跑步、篮球、足球、体育活动</p>
-            <p>🍚 食堂：营养早餐、午餐、晚餐</p>
-            <p>🛏️ 宿舍楼：学生住宿、休息生活</p>
-        </div>
-
-        <!-- 表白墙 -->
-        <div class="module" id="love">
-            <h2>校园表白墙（全校互通版）</h2>
-            <input type="text" id="msgInput" placeholder="文明发言，禁止辱骂暴力色情">
-            <button onclick="sendMsg(event)">发布留言</button>
-            <div id="msgList" style="margin-top:20px;"></div>
-        </div>
-
-        <!-- 意见栏 -->
-        <div class="module" id="suggest">
-            <h2>意见建议栏</h2>
-            <textarea id="suggestText" placeholder="写下你的意见" rows="4"></textarea>
-            <button onclick="submitSuggest(event)">提交建议</button>
-            <div id="suggestList" style="margin-top:20px;"></div>
-        </div>
-
-        <div class="module" id="map">
-            <h2>校园地图</h2>
-            <div class="map-box">
-                <img src="https://picsum.photos/800/300" alt="校园地图">
-            </div>
-        </div>
+    <div class="module" id="love">
+        <h2>校园表白墙（全局互通 · 所有人可见）</h2>
+        <input type="text" id="msgInput" placeholder="文明发言">
+        <button onclick="sendMsg()">发布留言</button>
+        <div id="msgList" style="margin-top:20px;"></div>
     </div>
 
-    <div class="footer">
-        <p>抚松一中新城校区 版权所有 © 2025</p>
-        <p>地址：吉林省白山市抚松县 | 联系电话：13331070</p>
+    <div class="module" id="suggest">
+        <h2>意见建议栏（全局互通 · 所有人可见）</h2>
+        <textarea id="suggestText" rows="4"></textarea>
+        <button onclick="submitSuggest()">提交建议</button>
+        <div id="suggestList" style="margin-top:20px;"></div>
     </div>
 
-    <script>
-        // 🔥 核心：新开页面 + 自动跳转
-        function goPage(id) {
-            let url = window.location.href.split('#')[0] + '#' + id;
-            window.open(url, '_blank');
-        }
+    <div class="module" id="map">
+        <h2>校园地图</h2>
+        <div class="map-box">
+            <img src="https://picsum.photos/800/300" alt="校园地图">
+        </div>
+    </div>
+</div>
 
-        // 页面加载后自动跳转到锚点
-        window.onload = function () {
-            let hash = window.location.hash;
-            if (hash) {
-                let target = document.querySelector(hash);
-                if (target) target.scrollIntoView();
+<div class="footer">
+    <p>抚松一中新城校区 版权所有 © 2025</p>
+</div>
+
+<script>
+// 🔥 真实可用的全局互通云端数据
+const GIST_URL = "https://api.github.com/gists/9e08f9dd6d2e94119874d4a8372c0a87";
+
+// 读取表白墙
+async function loadMsgs() {
+    let res = await fetch(GIST_URL);
+    let data = await res.json();
+    let file = data.files["wall.json"];
+    let content = JSON.parse(file.content);
+    let list = content.msgs || [];
+    let box = document.getElementById("msgList");
+    box.innerHTML = "";
+    list.reverse().forEach(it => {
+        let d = document.createElement("div");
+        d.className = "love-box";
+        d.innerHTML = `
+            <div class="msg-text">匿名：${it.text}</div>
+            <div class="msg-time">${it.time}</div>
+        `;
+        box.appendChild(d);
+    });
+}
+
+// 发布表白
+async function sendMsg() {
+    let text = document.getElementById("msgInput").value.trim();
+    if (!text) return alert("请输入内容");
+    
+    let res = await fetch(GIST_URL);
+    let data = await res.json();
+    let content = JSON.parse(data.files["wall.json"].content);
+    
+    content.msgs.push({
+        text,
+        time: new Date().toLocaleString()
+    });
+    
+    await fetch(GIST_URL, {
+        method: "PATCH",
+        headers: { "Accept": "application/vnd.github.v3+json" },
+        body: JSON.stringify({
+            files: {
+                "wall.json": {
+                    content: JSON.stringify(content, null, 2)
+                }
             }
+        })
+    });
+    
+    document.getElementById("msgInput").value = "";
+    loadMsgs();
+    alert("发布成功！所有人都能看见！");
+}
 
-            // 加载表白墙&意见栏
-            loadMsgs();
-            loadSuggests();
-        };
+// 读取意见栏
+async function loadSuggests() {
+    let res = await fetch(GIST_URL);
+    let data = await res.json();
+    let content = JSON.parse(data.files["wall.json"].content);
+    let list = content.suggests || [];
+    let box = document.getElementById("suggestList");
+    box.innerHTML = "";
+    list.reverse().forEach(it => {
+        let d = document.createElement("div");
+        d.className = "love-box";
+        d.innerHTML = `
+            <div class="msg-text">建议：${it.text}</div>
+            <div class="msg-time">${it.time}</div>
+        `;
+        box.appendChild(d);
+    });
+}
 
-        // 本地存储键名
-        const MSG_KEY = "fusong_msg";
-        const SUGGEST_KEY = "fusong_suggest";
-        const badWords = ["色情","黄","赌","毒","暴力","杀","砍","打","骂","滚","操","傻逼","妈的","去死","fuck","bitch"];
-
-        // 时间格式化
-        function now(){
-            const d = new Date();
-            return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,0)}-${String(d.getDate()).padStart(2,0)} ${String(d.getHours()).padStart(2,0)}:${String(d.getMinutes()).padStart(2,0)}`;
-        }
-
-        // ------------------------------
-        // 表白墙通用
-        // ------------------------------
-        function getMsgList(){
-            try {
-                return JSON.parse(localStorage.getItem(MSG_KEY)) || [];
-            } catch (e) {
-                return [];
+// 提交建议
+async function submitSuggest() {
+    let text = document.getElementById("suggestText").value.trim();
+    if (!text) return alert("请填写建议");
+    
+    let res = await fetch(GIST_URL);
+    let data = await res.json();
+    let content = JSON.parse(data.files["wall.json"].content);
+    
+    content.suggests.push({
+        text,
+        time: new Date().toLocaleString()
+    });
+    
+    await fetch(GIST_URL, {
+        method: "PATCH",
+        headers: { "Accept": "application/vnd.github.v3+json" },
+        body: JSON.stringify({
+            files: {
+                "wall.json": {
+                    content: JSON.stringify(content, null, 2)
+                }
             }
-        }
-        function saveMsgList(list){
-            localStorage.setItem(MSG_KEY, JSON.stringify(list));
-        }
+        })
+    });
+    
+    document.getElementById("suggestText").value = "";
+    loadSuggests();
+    alert("提交成功！所有人都能看见！");
+}
 
-        // 加载表白墙
-        function loadMsgs(){
-            const list = getMsgList();
-            const box = document.getElementById("msgList");
-            box.innerHTML = "";
-            [...list].reverse().forEach((it, i) => {
-                const d = document.createElement("div");
-                d.className = "love-box";
-                d.innerHTML = `
-                    <div class="msg-text">匿名：${it.text}</div>
-                    <div class="msg-time">${it.time}</div>
-                    <button class="del-btn" onclick="delMsg(${i})">删除</button>
-                `;
-                box.appendChild(d);
-            });
-        }
+// 启动
+loadMsgs();
+loadSuggests();
+</script>
 
-        // 发布表白
-        function sendMsg(e){
-            e.preventDefault();
-            const t = document.getElementById("msgInput").value.trim();
-            if(!t) { alert("请输入内容"); return; }
-            for(const w of badWords) {
-                if(t.includes(w)) { alert("禁止违规内容！"); return; }
-            }
-            const list = getMsgList();
-            list.push({ text: t, time: now() });
-            saveMsgList(list);
-            document.getElementById("msgInput").value = "";
-            loadMsgs();
-            alert("发布成功！");
-        }
-
-        // 删除表白
-        function delMsg(index){
-            if(!confirm("确定删除这条留言？")) return;
-            const list = getMsgList();
-            const realIndex = list.length - 1 - index;
-            list.splice(realIndex, 1);
-            saveMsgList(list);
-            loadMsgs();
-        }
-
-        // ------------------------------
-        // 意见栏
-        // ------------------------------
-        function getSuggestList(){
-            try {
-                return JSON.parse(localStorage.getItem(SUGGEST_KEY)) || [];
-            } catch (e) {
-                return [];
-            }
-        }
-        function saveSuggestList(list){
-            localStorage.setItem(SUGGEST_KEY, JSON.stringify(list));
-        }
-
-        // 加载意见
-        function loadSuggests(){
-            const list = getSuggestList();
-            const box = document.getElementById("suggestList");
-            box.innerHTML = "";
-            [...list].reverse().forEach((it, i) => {
-                const d = document.createElement("div");
-                d.className = "love-box";
-                d.innerHTML = `
-                    <div class="msg-text">建议：${it.text}</div>
-                    <div class="msg-time">${it.time}</div>
-                `;
-                box.appendChild(d);
-            });
-        }
-
-        // 提交意见
-        function submitSuggest(e){
-            e.preventDefault();
-            const t = document.getElementById("suggestText").value.trim();
-            if(!t) { alert("请填写建议"); return; }
-            const list = getSuggestList();
-            list.push({ text: t, time: now() });
-            saveSuggestList(list);
-            document.getElementById("suggestText").value = "";
-            loadSuggests();
-            alert("建议提交成功！");
-        }
-    </script>
 </body>
 </html>
